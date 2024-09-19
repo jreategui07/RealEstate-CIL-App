@@ -43,11 +43,17 @@ class CommercialProperty: Property {
             address: address,
             area: area,
             sellingPrice: sellingPrice,
-            sellingagent: sellingagent ?? Agent.defaultAgent()
+            sellingagent: sellingagent ?? nil
         )
     }
     
     override var propertyDescription: String {
-        return super.propertyDescription + ", Number of shelves: \(numberOfShelves), Number of exits: \(self.numberOfExits), Number of storeys: \(self.numberOfStoreys),Property type: \(self.propertyType)"
+        return super.propertyDescription + """
+            --- Property desription ---
+            Number of shelves: \(self.numberOfShelves)
+            Number of exits: \(self.numberOfExits)
+            Number of storeys: \(self.numberOfStoreys)
+            Property type: \(self.propertyType)
+            """
     }
 }

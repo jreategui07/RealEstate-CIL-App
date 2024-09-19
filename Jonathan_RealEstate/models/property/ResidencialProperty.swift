@@ -36,11 +36,16 @@ class ResidencialProperty: Property {
             address: address,
             area: area,
             sellingPrice: sellingPrice,
-            sellingagent: sellingagent ?? Agent.defaultAgent()
+            sellingagent: sellingagent ?? nil
         )
     }
     
     override var propertyDescription: String {
-        return super.propertyDescription + ", Number of bedrooms: \(numberOfBedrooms), Number of bathrooms: \(self.numberOfBathrooms), Property type: \(self.propertyType)"
+        return super.propertyDescription + """
+            --- Property desription ---
+            Number of bedrooms: \(self.numberOfBedrooms)
+            Number of bathrooms: \(self.numberOfBathrooms)
+            Property type: \(self.propertyType)
+            """
     }
 }

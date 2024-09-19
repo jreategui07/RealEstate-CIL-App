@@ -9,10 +9,18 @@ class Agent: AgentDescription {
     var id: String
     var name: String
     var email: String
-    var listOfProperties: [Property] // selling or buying
-    var comisionRate: Double // commission they earn
+    var sellingProperties: [Property]
+    var buyingProperties: [Property]
+    var comisionRate: Double
     
-    init(id: String, name: String, email: String, listOfProperties: [Property] = [], comisionRate: Double = agentCommissionRate) {
+    init(
+        id: String,
+        name: String,
+        email: String,
+        sellingProperties: [Property] = [],
+        buyingProperties: [Property] = [],
+        comisionRate: Double = agentCommissionRate
+    ) {
         guard !id.isEmpty else {
             fatalError("ID cannot be empty.")
         }
@@ -28,30 +36,52 @@ class Agent: AgentDescription {
         self.id = id
         self.name = name
         self.email = email
-        self.listOfProperties = listOfProperties
+        self.sellingProperties = sellingProperties
+        self.buyingProperties = buyingProperties
         self.comisionRate = comisionRate
     }
     
     var agentDescription: String {
-        return "Agent desription \n ID: \(self.id), Name: \(self.name), Email: \(self.email), List of properties: \(self.listOfProperties), Comision rate: \(self.comisionRate) "
+        return """
+            --- Agent desription ---
+            ID: \(self.id)
+            Agent: \(self.name)
+            Email: \(self.email)
+            List of selling properties: \(self.sellingProperties.count)
+            List of buying properties: \(self.buyingProperties.count)
+            Comision rate: \(self.comisionRate)
+            """
     }
     
     func buyProperty(propertyId: String) {
-       // An agent cannot buy the same property they are selling
-       // An agent cannot buy a property if the property doesn’t have a selling agent
+        guard let propertyToBuy = buyingProperties.first(where: { $0.id == propertyId }) else {
+            fatalError("Property with ID \(propertyId) not found.")
+        }
+       
+        // An agent cannot buy the same property they are selling
+        guard propertyToBuy.sellingagent?.id == self.id else {
+            fatalError("Error: An agent cannot buy a property they are selling.")
+        }
+        
+        // An agent cannot buy a property if the property doesn’t have a selling agent
+        guard propertyToBuy.sellingagent != nil else {
+            fatalError("Error: The property must have a selling agent assigned.")
+        }
+        
+        // Buy the property
+        buyingProperties.append(propertyToBuy)
+        print("Property with ID \(propertyId) successfully bought by agent \(self.name).")
     }
     
     func sellProperty(propertyId: String) {
+        guard sellingProperties.contains(where: { $0.id == propertyId }) else {
+            print("Error: The agent is already selling or owns the property with ID \(propertyId).")
+            return
+        }
         
-    }
-    
-    static func defaultAgent() -> Agent {
-        return Agent(
-            id: "000",
-            name: "Default Agent",
-            email: "no_agent@domain.com",
-            listOfProperties: [],
-            comisionRate: 0.0
-        )
+        // find property to sell
+        
+//        listOfProperties.append(propertyToSell)
+//        print("Property with ID \(propertyId) successfully added to the selling list by agent \(self.name).")
     }
 }

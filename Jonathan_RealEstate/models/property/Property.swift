@@ -10,12 +10,18 @@ class Property: PropertyDescription {
     var address: String
     var area: PropertyArea
     var sellingPrice: Double
-    var sellingagent: Agent
+    var sellingagent: Agent?
     
     var comision: Double
     var finalPrice: Double
     
-    init(id: String, address: String, area: PropertyArea, sellingPrice: Double, sellingagent: Agent) {
+    init(
+        id: String,
+        address: String,
+        area: PropertyArea,
+        sellingPrice: Double,
+        sellingagent: Agent?
+    ) {
         guard !id.isEmpty else {
             fatalError("ID cannot be empty.")
         }
@@ -38,7 +44,14 @@ class Property: PropertyDescription {
     }
     
     var propertyDescription: String {
-        return "Property desription \n ID: \(self.id), Address: \(self.address), Area: \(self.area), Selling Price: \(self.sellingPrice), Selling Agent: \(self.sellingagent) "
+        return """
+            --- Property desription ---
+            ID: \(self.id)
+            Address: \(self.address)
+            Area: \(self.area)
+            Selling Price: \(self.sellingPrice)
+            Selling Agent: \(self.sellingagent?.name ?? "No agent assigned")
+            """
     }
     
     func displayCommissionAndFinalPrice() {
