@@ -15,6 +15,7 @@
 		2BEA235E2C9C7C80005A55C8 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA235D2C9C7C80005A55C8 /* Agent.swift */; };
 		2BEA23602C9C7C8B005A55C8 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA235F2C9C7C8B005A55C8 /* Manager.swift */; };
 		2BEA23622C9C7E91005A55C8 /* AgentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA23612C9C7E91005A55C8 /* AgentDescription.swift */; };
+		2BEA23652C9CB567005A55C8 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA23642C9CB567005A55C8 /* common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		2BEA235D2C9C7C80005A55C8 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		2BEA235F2C9C7C8B005A55C8 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		2BEA23612C9C7E91005A55C8 /* AgentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDescription.swift; sourceTree = "<group>"; };
+		2BEA23642C9CB567005A55C8 /* common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		2BEA23452C9C6F99005A55C8 /* Jonathan_RealEstate */ = {
 			isa = PBXGroup;
 			children = (
+				2BEA23632C9CB549005A55C8 /* utils */,
 				2BEA23562C9C76B0005A55C8 /* protocols */,
 				2BEA234D2C9C6FFF005A55C8 /* models */,
 				2BEA23462C9C6F99005A55C8 /* main.swift */,
@@ -113,6 +116,14 @@
 				2BEA235F2C9C7C8B005A55C8 /* Manager.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		2BEA23632C9CB549005A55C8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				2BEA23642C9CB567005A55C8 /* common.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 				2BEA23622C9C7E91005A55C8 /* AgentDescription.swift in Sources */,
 				2BEA234F2C9C7009005A55C8 /* Property.swift in Sources */,
 				2BEA23512C9C711A005A55C8 /* ResidencialProperty.swift in Sources */,
+				2BEA23652C9CB567005A55C8 /* common.swift in Sources */,
 				2BEA23472C9C6F99005A55C8 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

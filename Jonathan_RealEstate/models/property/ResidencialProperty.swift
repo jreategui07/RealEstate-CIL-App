@@ -5,15 +5,6 @@
 //  Created by Jonathan Reátegui on 2024-09-19.
 //
 
-import Foundation
-
-enum ResidencialPropertyType {
-    case condo
-    case apartment
-    case detached
-    case semiDetached
-}
-
 class ResidencialProperty: Property {
     var numberOfBedrooms: Int
     var numberOfBathrooms: Int
@@ -24,12 +15,19 @@ class ResidencialProperty: Property {
         address: String,
         area: PropertyArea,
         sellingPrice: Double,
-        sellingagent: Agent, // could be empty
+        sellingagent: Agent?,
         numberOfBedrooms: Int,
         numberOfBathrooms: Int,
         propertyType: ResidencialPropertyType
     ) {
-        // TODO: validate values, shouldn't be empty
+        guard numberOfBedrooms > 0 else {
+            fatalError("Number of bedrooms must be greater than 0.")
+        }
+        
+        guard numberOfBathrooms > 0 else {
+            fatalError("Number of bathrooms must be greater than 0.")
+        }
+        
         self.numberOfBedrooms = numberOfBedrooms
         self.numberOfBathrooms = numberOfBathrooms
         self.propertyType = propertyType
@@ -38,7 +36,7 @@ class ResidencialProperty: Property {
             address: address,
             area: area,
             sellingPrice: sellingPrice,
-            sellingagent: sellingagent
+            sellingagent: sellingagent ?? Agent.defaultAgent()
         )
     }
     

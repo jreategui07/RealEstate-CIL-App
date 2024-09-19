@@ -12,7 +12,19 @@ class Agent: AgentDescription {
     var listOfProperties: [Property] // selling or buying
     var comisionRate: Double // commission they earn
     
-    init(id: String, name: String, email: String, listOfProperties: [Property], comisionRate: Double) {
+    init(id: String, name: String, email: String, listOfProperties: [Property] = [], comisionRate: Double = agentCommissionRate) {
+        guard !id.isEmpty else {
+            fatalError("ID cannot be empty.")
+        }
+
+        guard !name.isEmpty else {
+            fatalError("Name cannot be empty.")
+        }
+
+        guard email.isEmpty else {
+            fatalError("Email cannot be empty.")
+        }
+
         self.id = id
         self.name = name
         self.email = email
@@ -31,5 +43,15 @@ class Agent: AgentDescription {
     
     func sellProperty(propertyId: String) {
         
+    }
+    
+    static func defaultAgent() -> Agent {
+        return Agent(
+            id: "000",
+            name: "Default Agent",
+            email: "no_agent@domain.com",
+            listOfProperties: [],
+            comisionRate: 0.0
+        )
     }
 }

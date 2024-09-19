@@ -5,12 +5,6 @@
 //  Created by Jonathan Reátegui on 2024-09-19.
 //
 
-enum ComercialPropertyType {
-    case warehouse
-    case store
-    case coffeeshop
-}
-
 class CommercialProperty: Property {
     var numberOfShelves: Int
     var numberOfExits: Int
@@ -22,13 +16,24 @@ class CommercialProperty: Property {
         address: String,
         area: PropertyArea,
         sellingPrice: Double,
-        sellingagent: Agent, // could be empty
+        sellingagent: Agent?,
         numberOfShelves: Int, 
         numberOfExits: Int,
         numberOfStoreys: Int,
         propertyType: ComercialPropertyType
     ) {
-        // TODO: validate values, shouldn't be empty
+        guard numberOfShelves > 0 else {
+            fatalError("Number of shelves must be greater than 0.")
+        }
+        
+        guard numberOfExits > 0 else {
+            fatalError("Number of exits must be greater than 0.")
+        }
+        
+        guard numberOfStoreys > 0 else {
+            fatalError("Number of storeys must be greater than 0.")
+        }
+        
         self.numberOfShelves = numberOfShelves
         self.numberOfExits = numberOfExits
         self.numberOfStoreys = numberOfStoreys
@@ -38,7 +43,7 @@ class CommercialProperty: Property {
             address: address,
             area: area,
             sellingPrice: sellingPrice,
-            sellingagent: sellingagent
+            sellingagent: sellingagent ?? Agent.defaultAgent()
         )
     }
     
