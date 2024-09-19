@@ -43,7 +43,9 @@ class Agent: AgentDescription {
     
     var agentDescription: String {
         return """
-            --- Agent desription ---
+            ------------------------------------------
+            Agent desription
+            ------------------------------------------
             ID: \(self.id)
             Agent: \(self.name)
             Email: \(self.email)

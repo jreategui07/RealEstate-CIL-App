@@ -49,7 +49,7 @@ class CommercialProperty: Property {
     
     override var propertyDescription: String {
         return super.propertyDescription + """
-            --- Property desription ---
+            
             Number of shelves: \(self.numberOfShelves)
             Number of exits: \(self.numberOfExits)
             Number of storeys: \(self.numberOfStoreys)

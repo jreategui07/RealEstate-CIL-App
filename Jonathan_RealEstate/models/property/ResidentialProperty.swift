@@ -5,7 +5,7 @@
 //  Created by Jonathan Reátegui on 2024-09-19.
 //
 
-class ResidencialProperty: Property {
+class ResidentialProperty: Property {
     var numberOfBedrooms: Int
     var numberOfBathrooms: Int
     var propertyType: ResidencialPropertyType
@@ -42,7 +42,7 @@ class ResidencialProperty: Property {
     
     override var propertyDescription: String {
         return super.propertyDescription + """
-            --- Property desription ---
+            
             Number of bedrooms: \(self.numberOfBedrooms)
             Number of bathrooms: \(self.numberOfBathrooms)
             Property type: \(self.propertyType)
