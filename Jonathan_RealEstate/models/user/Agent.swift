@@ -55,35 +55,62 @@ class Agent: AgentDescription {
             """
     }
     
-    func buyProperty(propertyId: String) {
-        guard let propertyToBuy = sellingProperties.first(where: { $0.id == propertyId }) else {
-            fatalError("Property with ID \(propertyId) not found.")
-        }
-       
-        // An agent cannot buy the same property they are selling
-        guard propertyToBuy.sellingAgent?.id == self.id else {
-            fatalError("Error: An agent cannot buy a property they are selling.")
-        }
-        
-        // An agent cannot buy a property if the property doesn’t have a selling agent
-        guard propertyToBuy.sellingAgent != nil else {
-            fatalError("Error: The property must have a selling agent assigned.")
-        }
-        
-        // Buy the property
-        buyingProperties.append(propertyToBuy)
-        print("Property with ID \(propertyId) successfully bought by agent \(self.name).")
-    }
-    
     func sellProperty(propertyId: String) {
-        guard sellingProperties.contains(where: { $0.id == propertyId }) else {
-            print("Error: The agent is already selling or owns the property with ID \(propertyId).")
+        guard let propertyToSell = sellingProperties.first(where: { $0.id == propertyId }) else {
+            print("Error: The agent \(self.name) is not assigned to sell the property with ID \(propertyId)")
             return
         }
         
-        // find property to sell
+        print("""
+        -------------------------------------------------
+        Agent \(self.name) is attempting to sell the property
+        Property ID: \(propertyToSell.id)
+        Address: \(propertyToSell.address)
+        Selling Price: \(propertyToSell.sellingPrice)
+        Final Price (with commission): \(propertyToSell.finalPrice)
+        -------------------------------------------------
+        """)
+    }
+
+    func buyProperty(propertyId: String, from manager: Manager) {
+        guard let propertyToBuy = manager.searchPropertyById(propertyId: propertyId) else {
+            print("Error: Property with ID \(propertyId) not found in the manager's list.")
+            return
+        }
+
+        // An agent cannot buy the same property they already own
+        guard !buyingProperties.contains(where: { $0.id == propertyId }) else {
+            print("Error: Agent \(self.name) already owns the property with ID \(propertyId).")
+            return
+        }
         
-//        listOfProperties.append(propertyToSell)
-//        print("Property with ID \(propertyId) successfully added to the selling list by agent \(self.name).")
+        // An agent cannot buy the same property they are selling
+        guard propertyToBuy.sellingAgent?.id != self.id else {
+            print("Error: Agent \(self.name) cannot buy a property they are selling.")
+            return
+        }
+
+        // An agent cannot buy a property if the property doesn’t have a selling agent
+        guard let sellingAgent = propertyToBuy.sellingAgent else {
+            print("Error: The property with ID \(propertyId) does not have a selling agent assigned.")
+            return
+        }
+        
+        // Add the property to the agent's list of purchased properties
+        buyingProperties.append(propertyToBuy)
+        print("""
+        -------------------------------------------------
+        Success! Agent \(self.name) has successfully bought the property:
+        Property ID: \(propertyToBuy.id)
+        Address: \(propertyToBuy.address)
+        Selling Price: \(propertyToBuy.sellingPrice)
+        Commission for the selling agent \(sellingAgent.name): \(propertyToBuy.comision)
+        Final Price: \(propertyToBuy.finalPrice)
+        -------------------------------------------------
+        """)
+    }
+    
+    func totalCommission() -> Double {
+        return sellingProperties.reduce(0) { $0 + $1.comision }
     }
 }

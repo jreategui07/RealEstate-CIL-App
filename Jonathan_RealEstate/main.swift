@@ -293,13 +293,45 @@ func main() {
     // Show appropriate informational message for user along with agent and property details.
     // Choice of agent and property object is yours.
     
+    print("""
+        ------------------------------------------
+        Agent is trying to sell a property
+        ------------------------------------------
+        """)
+    
+    agent2.sellProperty(propertyId: residentialProperty2.id)
+    
     // 10. Demonstrate the operation where an agent is trying to buy a property, and they are successful as per the rules stated in Agent class.
     // Show appropriate informational message for user along with agent and property details.
+    
+    print("""
+        ------------------------------------------
+        Agent is trying to buy a property - Success
+        ------------------------------------------
+        """)
+    
+    agent1.buyProperty(propertyId: residentialProperty2.id, from: manager)
     
     // 11. Demonstrate the operation where an agent is trying to buy a property, and they are unsuccessful as per the rules stated in Agent class.
     // Show appropriate informational message for user along with agent and property details.
     
+    print("""
+        ------------------------------------------
+        Agent is trying to buy a property - Error
+        ------------------------------------------
+        """)
+    
+    agent1.buyProperty(propertyId: residentialProperty2.id, from: manager)
+    
     // 12. Show the highest earning (maximum commission) agent information.
+    
+    print("""
+        ------------------------------------------
+        Show the highest earning agent
+        ------------------------------------------
+        """)
+    
+    manager.highestEarningAgent(agents: [agent1, agent2, agent3])
 }
 
 main()

@@ -107,5 +107,24 @@ class Manager {
         }
         return filteredProperties
     }
+    
+    func highestEarningAgent(agents: [Agent]) {
+        guard !agents.isEmpty else {
+            print("No agents found")
+            return
+        }
 
+        let highestEarningAgent = agents.max(by: { $0.totalCommission() < $1.totalCommission() })
+        
+        if let agent = highestEarningAgent {
+            print("""
+            -------------------------------------------------
+            Highest earning agent: \(agent.name)
+            ID: \(agent.id)
+            Email: \(agent.email)
+            Total commission earned: \(agent.totalCommission())
+            -------------------------------------------------
+            """)
+        }
+    }
 }
