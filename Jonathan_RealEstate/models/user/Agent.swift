@@ -29,7 +29,7 @@ class Agent: AgentDescription {
             fatalError("Name cannot be empty.")
         }
 
-        guard email.isEmpty else {
+        guard !email.isEmpty else {
             fatalError("Email cannot be empty.")
         }
 
@@ -54,17 +54,17 @@ class Agent: AgentDescription {
     }
     
     func buyProperty(propertyId: String) {
-        guard let propertyToBuy = buyingProperties.first(where: { $0.id == propertyId }) else {
+        guard let propertyToBuy = sellingProperties.first(where: { $0.id == propertyId }) else {
             fatalError("Property with ID \(propertyId) not found.")
         }
        
         // An agent cannot buy the same property they are selling
-        guard propertyToBuy.sellingagent?.id == self.id else {
+        guard propertyToBuy.sellingAgent?.id == self.id else {
             fatalError("Error: An agent cannot buy a property they are selling.")
         }
         
         // An agent cannot buy a property if the property doesn’t have a selling agent
-        guard propertyToBuy.sellingagent != nil else {
+        guard propertyToBuy.sellingAgent != nil else {
             fatalError("Error: The property must have a selling agent assigned.")
         }
         

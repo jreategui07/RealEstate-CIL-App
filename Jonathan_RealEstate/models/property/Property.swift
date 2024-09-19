@@ -10,7 +10,7 @@ class Property: PropertyDescription {
     var address: String
     var area: PropertyArea
     var sellingPrice: Double
-    var sellingagent: Agent?
+    var sellingAgent: Agent?
     
     var comision: Double
     var finalPrice: Double
@@ -38,7 +38,7 @@ class Property: PropertyDescription {
         self.address = address
         self.area = area
         self.sellingPrice = sellingPrice
-        self.sellingagent = sellingagent
+        self.sellingAgent = sellingagent
         self.comision = self.sellingPrice * agentCommissionRate
         self.finalPrice = self.sellingPrice + self.comision
     }
@@ -50,7 +50,7 @@ class Property: PropertyDescription {
             Address: \(self.address)
             Area: \(self.area)
             Selling Price: \(self.sellingPrice)
-            Selling Agent: \(self.sellingagent?.name ?? "No agent assigned")
+            Selling Agent: \(self.sellingAgent?.name ?? "No agent assigned")
             """
     }
     
