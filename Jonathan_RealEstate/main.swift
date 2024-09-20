@@ -78,19 +78,20 @@ func main() {
     print(residentialProperty3.propertyDescription)
     
     // One of the objects of ResidentialProperty and CommercialProperty classes should demonstrate the use of failable initializer (Error message)
+    // Note: uncomenting the code below we can appreciate the error messages
     
-//    let residentialProperty4 = ResidentialProperty(
+//    let residentialProperty5 = ResidentialProperty(
 //        id: UUID().uuidString,
 //        address: "321 Birch St",
 //        area: PropertyArea.sq,
 //        sellingPrice: 680000,
-//        sellingagent: agent2,
+//        sellingagent: nil,
 //        numberOfBedrooms: -1,
 //        numberOfBathrooms: 2,
 //        propertyType: ResidencialPropertyType.condo
 //    )
 
-//    let commercialProperty3 = CommercialProperty(
+//    let commercialProperty4 = CommercialProperty(
 //        id: UUID().uuidString,
 //        address: "300 Elm St",
 //        area: PropertyArea.ft,
