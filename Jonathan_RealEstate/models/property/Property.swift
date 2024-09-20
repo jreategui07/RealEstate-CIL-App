@@ -45,9 +45,6 @@ class Property: PropertyDescription {
     
     var propertyDescription: String {
         return """
-            ------------------------------------------
-            Property desription
-            ------------------------------------------
             ID: \(self.id)
             Address: \(self.address)
             Area: \(self.area)

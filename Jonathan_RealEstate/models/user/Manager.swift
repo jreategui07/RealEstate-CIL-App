@@ -15,6 +15,7 @@ class Manager {
     ) {
         self.residencialProperties = residencialProperties
         self.commercialProperties = commercialProperties
+        print("Manager created succesfully")
     }
     
     func assignAgentToProperty(agent: Agent, propertyId: String) {

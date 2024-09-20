@@ -54,6 +54,7 @@ class CommercialProperty: Property {
             Number of exits: \(self.numberOfExits)
             Number of storeys: \(self.numberOfStoreys)
             Property type: \(self.propertyType)
+            ------------------------------------------
             """
     }
 }

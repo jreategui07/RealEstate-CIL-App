@@ -10,6 +10,12 @@ import Foundation
 func main() {
     // 1. Create at least 5 objects of ResidentialProperty and CommercialProperty
     
+    print("""
+        ************************************************************************************************************
+        1. Creating properties
+        ************************************************************************************************************
+        """)
+    
     let residentialProperty1 = ResidentialProperty(
         id: UUID().uuidString,
         address: "123 Maple St",
@@ -98,6 +104,12 @@ func main() {
     
     // 2. Create at least 3 object of Agent class. Use hard-coded data.
     
+    print("""
+        ************************************************************************************************************
+        2. Creating agents
+        ************************************************************************************************************
+        """)
+    
     let agent1 = Agent(
         id: UUID().uuidString,
         name: "John Doe",
@@ -125,6 +137,12 @@ func main() {
 
     // 3. Create an object of Manager class. Use hard-coded data.
     
+    print("""
+        ************************************************************************************************************
+        3. Creating manager
+        ************************************************************************************************************
+        """)
+    
     let residentialPropertiesList: [ResidentialProperty] = [
         residentialProperty1,
         residentialProperty2,
@@ -144,9 +162,9 @@ func main() {
     // 4. Assign different agents to different properties.
     
     print("""
-        ------------------------------------------
-        Adding agents to properties
-        ------------------------------------------
+        ************************************************************************************************************
+        4. Adding agents to properties
+        ************************************************************************************************************
         """)
     
     manager.assignAgentToProperty(
@@ -173,9 +191,9 @@ func main() {
     // Below we show how the add property methods work for comercial and residential property
     
     print("""
-        ------------------------------------------
-        Adding more properties to manager
-        ------------------------------------------
+        ************************************************************************************************************
+        5.1 Adding more properties to manager
+        ************************************************************************************************************
         """)
     
     let residentialProperty4 = ResidentialProperty(
@@ -209,9 +227,9 @@ func main() {
     // Display all the properties in the increasing order of their selling price. (hint: use closure to sort)
     
     print("""
-        ------------------------------------------
-        Displaying properties sorted by price asc
-        ------------------------------------------
+        ************************************************************************************************************
+        5.2 Displaying properties sorted by price asc
+        ************************************************************************************************************
         """)
     
     manager.displayPropertiesByPrice()
@@ -219,9 +237,9 @@ func main() {
     // 6. Modify adributes of at least 1 property object.
     
     print("""
-        ------------------------------------------
-        Updating adributes of 2 properties
-        ------------------------------------------
+        ************************************************************************************************************
+        6. Updating adributes of 2 properties
+        ************************************************************************************************************
         """)
     
     manager.updatePropertyAttributes(
@@ -250,9 +268,9 @@ func main() {
     // 7. Delete at least 1 object from the property list
     
     print("""
-        ------------------------------------------
-        Removing 2 properties
-        ------------------------------------------
+        ************************************************************************************************************
+        7. Removing 2 properties
+        ************************************************************************************************************
         """)
     
     manager.deleteProperty(propertyId: residentialProperty1.id)
@@ -262,9 +280,9 @@ func main() {
     // 8. Demonstrate the use of searching property operation using the various functions from Manager class.
     
     print("""
-        ------------------------------------------
-        Searching properties by property ID
-        ------------------------------------------
+        ************************************************************************************************************
+        8.1 Searching properties by property ID
+        ************************************************************************************************************
         """)
     
     
@@ -276,9 +294,9 @@ func main() {
     }
     
     print("""
-        ------------------------------------------
-        Searching properties by agent ID
-        ------------------------------------------
+        ************************************************************************************************************
+        8.2 Searching properties by agent ID
+        ************************************************************************************************************
         """)
 
     let propertiesByAgent = manager.searchPropertyByAgentId(agentId: agent2.id)
@@ -294,9 +312,9 @@ func main() {
     // Choice of agent and property object is yours.
     
     print("""
-        ------------------------------------------
-        Agent is trying to sell a property
-        ------------------------------------------
+        ************************************************************************************************************
+        9. Agent is trying to sell a property
+        ************************************************************************************************************
         """)
     
     agent2.sellProperty(propertyId: residentialProperty2.id)
@@ -305,9 +323,9 @@ func main() {
     // Show appropriate informational message for user along with agent and property details.
     
     print("""
-        ------------------------------------------
-        Agent is trying to buy a property - Success
-        ------------------------------------------
+        ************************************************************************************************************
+        10. Agent is trying to buy a property - Success
+        ************************************************************************************************************
         """)
     
     agent1.buyProperty(propertyId: residentialProperty2.id, from: manager)
@@ -316,9 +334,9 @@ func main() {
     // Show appropriate informational message for user along with agent and property details.
     
     print("""
-        ------------------------------------------
-        Agent is trying to buy a property - Error
-        ------------------------------------------
+        ************************************************************************************************************
+        11. Agent is trying to buy a property - Error
+        ************************************************************************************************************
         """)
     
     agent1.buyProperty(propertyId: residentialProperty2.id, from: manager)
@@ -326,9 +344,9 @@ func main() {
     // 12. Show the highest earning (maximum commission) agent information.
     
     print("""
-        ------------------------------------------
-        Show the highest earning agent
-        ------------------------------------------
+        ************************************************************************************************************
+        12. Show the highest earning agent
+        ************************************************************************************************************
         """)
     
     manager.highestEarningAgent(agents: [agent1, agent2, agent3])

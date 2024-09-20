@@ -43,15 +43,13 @@ class Agent: AgentDescription {
     
     var agentDescription: String {
         return """
-            ------------------------------------------
-            Agent desription
-            ------------------------------------------
             ID: \(self.id)
             Agent: \(self.name)
             Email: \(self.email)
             List of selling properties: \(self.sellingProperties.count)
             List of buying properties: \(self.buyingProperties.count)
             Comision rate: \(self.comisionRate)
+            ------------------------------------------
             """
     }
     

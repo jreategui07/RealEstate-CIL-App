@@ -46,6 +46,7 @@ class ResidentialProperty: Property {
             Number of bedrooms: \(self.numberOfBedrooms)
             Number of bathrooms: \(self.numberOfBathrooms)
             Property type: \(self.propertyType)
+            ------------------------------------------
             """
     }
 }
